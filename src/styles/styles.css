@@ -51,6 +51,11 @@ html {
 a, a:hover {text-decoration: none; color: #F8D12F !important;}
 a:hover {text-decoration: underline;}
 
+a.btn-white, a.btn-white:hover, .status-panel_wallets__btn, .status-panel_wallets__btn:hover, 
+.def-btn, .def-btn:hover {
+    color: #fff !important; text-decoration: none !important;
+}
+
 body {
     background-color: #18191a !important;
     position: relative;

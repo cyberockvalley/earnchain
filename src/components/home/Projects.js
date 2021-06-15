@@ -43,7 +43,8 @@ const Item = ({children, commingSoon, item, ...props}) => {
                             bg: SEC_COLOR,
                             color: "#fff",
                             opacity: "0.7"
-                        }}>{item.cta}</Button>
+                        }}
+                        className="btn-white">{item.cta}</Button>
                         :
                         null
                     }

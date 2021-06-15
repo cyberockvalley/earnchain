@@ -6,8 +6,9 @@
     "dev": "npm run open && npm run dev-1",
     "dev-1": "next dev -p 2000",
     "open": "start http://dev.domain.com:2000",
-    "build": "next build && next export -o build",
-    "start": "next start -2000",
+    "build": "next build",
+    "build-e": "next build && next export -o build",
+    "start": "next start -p 2021",
     "conv": "cd IGNORES/pages/ && html2react -c stateless "
   },
   "dependencies": {

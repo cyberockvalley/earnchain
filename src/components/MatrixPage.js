@@ -2,7 +2,7 @@ import useTranslation from "next-translate/useTranslation";
 import Trans from "next-translate/Trans"
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
-import Header from "./Header";
+import MatrixHeader from "./MatrixHeader";
 import Link, { buildLink } from "./views/Link";
 import PageTitle from './PageTitle'
 import { useRouter } from 'next/router'
@@ -160,27 +160,7 @@ const MatrixPage = () => {
   return (
     <div id="home-page">
       <PageTitle title={t('common:title')} />
-      <Header home="/">
-        <div className="btn-wrap">
-          <Link
-            href="/register"
-            className="def-btn def-blue"
-          >
-            {t("join-now")}{" "}
-          </Link>
-        </div>
-        <div className="btn-wrap">
-          <Link
-            href="/login"
-            className="def-btn def-purple"
-            style={{
-              whiteSpace: "nowrap"
-            }}
-          >
-            {t("login")}{" "}
-          </Link>
-        </div>
-      </Header>
+      <MatrixHeader />
       <div className="wrapper" id="wrapper">
         <VStack flexGrow="1" className="section heading will-animate" zIndex="1">
           <div className="section-content heading-content full">
@@ -222,8 +202,8 @@ const MatrixPage = () => {
         </VStack>
         <Box zIndex="1" className="section participants will-animate">
           <div className="container">
-            <HStack justifyContent="space-between">
-              <div className="col-md-3">
+            <HStack justifyContent="space-between" flexWrap="wrap">
+              <Box className="col-md-3">
                 <StatBox className="participant_in">
                   <div className="stats-top_sum">
                     <LoadingOrView as={HStack} justifyContent="center" isLoading={!contractData?.stats?.totalUsers}>
@@ -232,8 +212,8 @@ const MatrixPage = () => {
                   </div>
                   <Box className="stats-top_subject" textTransform="uppercase">{t("all-members")}</Box>
                 </StatBox>
-              </div>
-              <Box className="col-md-3" d={contractData?.stats?.usersPerDay && contractData?.stats?.usersPerDay > 0? "block" : "none"}>
+              </Box>
+              <Box className="col-md-3" mt={{base: "15px !important", md: "0px"}} d={contractData?.stats?.usersPerDay && contractData?.stats?.usersPerDay > 0? "block" : "none"}>
                 <StatBox className="participant_in">
                   <div className="stats-top_sum">
                     {toLocaleString(contractData?.stats?.usersPerDay, lang, 0)}
@@ -241,7 +221,7 @@ const MatrixPage = () => {
                   <Box className="stats-top_subject" textTransform="uppercase">{t("users-per-day")}</Box>
                 </StatBox>
               </Box>
-              <div className="col-md-3">
+              <Box className="col-md-3" mt={{base: "15px !important", md: "0px"}}>
                 <StatBox className="participant_in">
                   <div className="stats-top_sum">
                     <LoadingOrView as={HStack} justifyContent="center" isLoading={!contractData?.stats?.totalBUSDEarned}>
@@ -252,8 +232,8 @@ const MatrixPage = () => {
                     {t("total-busd-earned")}
                   </Box>
                 </StatBox>
-              </div>
-              <div className="col-md-3">
+              </Box>
+              <Box className="col-md-3" mt={{base: "15px !important", md: "0px"}}>
                 <StatBox className="participant_in">
                   <div className="stats-top_sum">
                     <LoadingOrView as={HStack} justifyContent="center" isLoading={!contractData?.stats?.totalECTEarned}>
@@ -264,7 +244,7 @@ const MatrixPage = () => {
                     {t("total-ect-earned")}
                   </Box>
                 </StatBox>
-              </div>
+              </Box>
             </HStack>
           </div>
         </Box>

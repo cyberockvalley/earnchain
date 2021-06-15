@@ -84,7 +84,7 @@ Header.Text = ({as, href, active, className, children, ...props}) => {
             h="45px"
             p={{base: "12px 15px", md: "12px 15px"}}
             fontSize="17px"
-            className={`${className || ""}`} 
+            className={`btn-white ${className || ""}`} 
             {...props}>
             {children}
         </Text>

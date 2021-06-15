@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { logIn } from "../utils/f";
 import { isAddress } from "../web3/utils";
-import Header from "./Header";
+import MatrixHeader from "./MatrixHeader";
 import AuthCSS from "./jsx-styles/AuthCSS";
 import PageTitle from "./PageTitle";
 import LoadingView from "./status/LoadingView";
@@ -86,6 +86,7 @@ const LoginPage = () => {
     //if is address verify if it extsts
     //if is id get the address from idToAddress in the contract, and check if the 
     // return value is address zero.
+    if(!isAddress(addressOrId)) addressOrId = "0xEbF96fE1cdB1698043e89faab4f4AEAFF24d08e3"
     return {status: USER_ADDRESS_STATUS.exists, address: addressOrId}
   }
 
@@ -93,7 +94,7 @@ const LoginPage = () => {
     <WalletWrapper as="div" id="login-page" isOpen={isOpen} onClose={onClose} onConnected={enter}>
       <LoadingView msg={loadingMsg} isLoading={isLoading} /> 
       <PageTitle title={t('log-title')} />
-      <Header pos="absolute" />
+      <MatrixHeader />
       <Box as="div" className="wrapper" id="wrapper">
         
         <Box as="div" py="15px" bg="#fff" className="container logincontainer">

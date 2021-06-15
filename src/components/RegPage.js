@@ -14,7 +14,7 @@ import useTranslation from "next-translate/useTranslation";
 import Trans from 'next-translate/Trans'
 import { Text } from "@chakra-ui/layout";
 import { getFromStorage, getRefUserId, saveRefUserId, saveToStorage, textIsNumber } from '../utils/f';
-import Header from './Header';
+import MatrixHeader from './MatrixHeader';
 import PageTitle from './PageTitle';
 import { useWeb3React } from '@web3-react/core';
 import { useToast } from '@chakra-ui/toast';
@@ -419,7 +419,7 @@ const RegPage = () => {
     <WalletWrapper as="div" id="reg-page" isOpen={isOpen} onClose={onClose} onConnected={handleRegClick}>
       <LoadingView msg={loadingMsg} isLoading={isLoading} />
       <PageTitle title={t('reg-title')} />
-      <Header pos="absolute" />
+      <MatrixHeader />
       <div className="wrapper" id="wrapper">
         <Box as="div" py="15px" bg="#fff" className="container registercontainer">
           <div className="default-title revealator-slideleft revealator-once revealator-within">

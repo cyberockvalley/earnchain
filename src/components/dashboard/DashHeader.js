@@ -5,6 +5,8 @@ import { APP_NAME, SOCIAL_LINKS } from "../../utils/c";
 import { logOut, toLocaleString } from "../../utils/f";
 import LoadingOrView from "../status/LoadingOrView";
 import Link from "../views/Link";
+import MatrixHeader from "../MatrixHeader";
+import { Box, Flex } from "@chakra-ui/react";
 
 const DashHeader = ({home, totalUsers, tokenEarned, coinEarned}) => {
 
@@ -48,7 +50,9 @@ const DashHeader = ({home, totalUsers, tokenEarned, coinEarned}) => {
             }
           </div>
         </div>
-        <div className="stats-top d-flex">
+        <Flex className="stats-top d-flex" 
+        flexDirection={{base: "column", md: "row"}} 
+        flexWrap="wrap">
           <div className="no-gutters align-items-center">
             <div
               className="stats-top_sum"
@@ -94,7 +98,7 @@ const DashHeader = ({home, totalUsers, tokenEarned, coinEarned}) => {
               {t("token-earned")}
             </div>
           </div>
-        </div>
+        </Flex>
       </div>
     </div>
   )
