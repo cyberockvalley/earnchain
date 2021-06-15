@@ -26,6 +26,7 @@ import Stats from "../models/Stats";
 import X3 from "../models/X3";
 import X6 from "../models/X6";
 import LoadingView from "./status/LoadingView";
+import PageTitle from "./PageTitle";
 
 const DashPage = () => {
   const { account, library } = useWeb3React()
@@ -533,6 +534,7 @@ const DashPage = () => {
   return (
     <WalletWrapper id="dash-page" isOpen={isOpen} onClose={onClose} onConnected={onConnectedWallet}>
       <LoadingView msg={loadingMsg} isLoading={isLoading} />
+      <PageTitle title={t("dashboard")} />
       <div className="container">
         <DashHeader 
         totalUsers={contractData?.stats?.totalUsers} 
