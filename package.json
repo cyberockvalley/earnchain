@@ -3,13 +3,39 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "npm run open && npm run dev-1",
+    "dev-1": "next dev -p 2000",
+    "open": "start http://dev.domain.com:2000",
+    "build": "next build && next export -o build",
+    "start": "next start -2000",
+    "conv": "cd IGNORES/pages/ && html2react -c stateless "
   },
   "dependencies": {
+    "@binance-chain/bsc-connector": "^1.0.0",
+    "@chakra-ui/react": "^1.6.3",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "@web3-react/core": "^6.0.9",
+    "@web3-react/injected-connector": "^6.0.7",
+    "@web3-react/walletconnect-connector": "^6.1.1",
+    "@web3-react/walletlink-connector": "^6.0.9",
+    "dotenv": "^10.0.0",
+    "ethers": "^5.2.0",
+    "framer-motion": "^4.1.17",
     "next": "10.2.3",
+    "next-compose-plugins": "^2.2.1",
+    "next-images": "^1.7.0",
+    "next-translate": "^1.0.7",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-device-detect": "^1.17.0",
+    "react-dom": "17.0.2",
+    "react-js-pagination": "^3.0.3",
+    "react-loader-spinner": "^4.0.0",
+    "react-minimal-pie-chart": "^8.2.0",
+    "react-starfield-animation": "^1.0.1",
+    "sweetalert2": "^11.0.11"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0"
   }
 }

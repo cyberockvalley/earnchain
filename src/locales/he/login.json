@@ -1,0 +1,12 @@
+{
+    "log-title": "View your account details",
+    "empty-login-data": "Enter user ID or user Address",
+    "invalid-login-data": "Invalid user ID or user Address",
+    "page-title": "Dashboard entrance",
+    "login-wallet": "Automatic login",
+    "view-title": " Enter your account ID or Address to view account details",
+    "view-title-placeholder": "Account ID or wallet address",
+    "login-view": "View account",
+    "quest-no-account": "Not registered yet?",
+    "register": "Click here to register"
+}

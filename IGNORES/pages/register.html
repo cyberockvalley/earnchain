@@ -1,0 +1,275 @@
+<div id="reg-page" data-component="RegPage">
+    <header class="header">
+    <div class="header-wrap">
+    <div class="header-logo">
+    <h2 class="logo">SUPERSAGE</h2>
+    </div>
+    
+    </div>
+    </header><div class="wrapper" id="wrapper">
+    <div class="container registercontainer">
+    <div class="default-title revealator-slideleft revealator-once revealator-within">
+    <h2 class="text-center">The entrance to the office</h2>
+    </div>
+    <form method="post" class="auth-form ">
+    <div class="auth-form-col">
+    <label id="upline_lable" class="auth-label auth-form-label" style="display:none">Upline: <span id="span_upline">0</span></label>
+    <input type="hidden" name="upline" id="upline" value="0">
+    <input type="hidden" name="upline_address" id="upline_address" value="">
+    
+    <br>
+    <a class="def-btn def-purple" onclick="register_with_confirm()" href="javascript:void(0)">Register</a>
+    </div>
+    <div class="auth-reg-link">
+    <p>If you have an account:</p>
+    <a href="https://supersage.io/login">
+    ANDlt;ANDlt;ANDlt; AuthorizationANDgt;ANDgt;ANDgt;
+    </a>
+    </div>
+    </form>
+    </div>
+    <script src="https://supersage.io/assets/tron.js"></script>
+    <script>
+            function register_with_confirm()
+            {
+                var upline = $("#upline").val()
+                if(upline == 0)
+                {
+                    change_upline();
+                }
+                else
+                {
+                    Swal.fire({
+                    title: 'Upline Confirmation',
+                    html: "Your Current Upline ID is <b>"+upline+"</b>",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Proceed',
+                    cancelButtonText:'No, I Want to change it',
+                    allowOutsideClick:false,
+                    }).then((result) => {
+                    if (result.value) {
+                        register();
+                    }
+                    else
+                    {
+                        change_upline();
+                    }
+                    });
+                }
+                
+            }
+            function change_upline()
+            {
+                Swal.fire({
+                    title: 'Enter Upline ID',
+                    input: 'text',
+                    showCancelButton: true,
+                    inputValidator: (value) => {
+                        if (!value) {
+                            return 'Please enter upline ID'
+                        }
+                        else {
+                            if(/^[0-9]+$/.test(value)){
+                                $.ajax({
+                                    url: 'https://supersage.io/verify-id',
+                                    type: 'POST',
+                                    cache: false,
+                                    async: true,
+                                    dataType: 'json',
+                                    data: {
+                                        id: value,
+                                    },
+                                    success: function(data) {
+                                        if(data.status == 1)
+                                        {
+                                            $("#span_upline").text(value);
+                                            $("#upline").val(value);
+                                            $("#upline_address").val(data.address);
+                                            $("#upline_lable").show();
+                                        }
+                                        else
+                                        {
+                                            Swal.fire('', 'Please enter valid upline ID', 'error');
+                                        }
+                                    }
+                                });
+                            }
+                            else{
+                                Swal.fire('', "Please enter valid upline ID", 'error');
+                            }
+                        }
+                    }
+                });
+            }
+            async function register()
+            {
+        //         Swal.fire('', "System is under maintenance, please try after 20 mins", 'error');
+        //   return;
+    
+                var upline_address = $("#upline_address").val();
+                if(upline_address !="")
+                {
+                    var txid = await registerExt(upline_address);
+                    if(txid)
+                    {
+                        $.ajax({
+                            url: 'https://supersage.io/track-txn',
+                            type: 'POST',
+                            cache: false,
+                            async: true,
+                            dataType: 'json',
+                            data: {
+                                tx: txid,
+                                address:window.tronWeb.defaultAddress.base58
+                            },
+                            success: function(data) {
+                                if(data.status == 1)
+                                {
+                                    window.location = 'https://supersage.io/status/'+txid;
+                                }
+                                else
+                                {
+                                    Swal.fire('', 'Please enter valid upline ID', 'error');
+                                }
+                            }
+                        });
+                    }
+                }
+                else
+                {
+                    Swal.fire('', "Please enter valid upline ID", 'error');
+                }
+                
+            }
+        </script>
+    </div><div id="particles-js"><canvas class="particles-js-canvas-el" width="663" height="629" style="width: 100%; height: 100%;"></canvas></div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://supersage.io/resources/assets/fullpage/scrolloverflow.min.js"></script>
+    <script src="https://supersage.io/resources/assets/fullpage/fullpage.min.js"></script>
+    <script src="https://supersage.io/resources/assets/fullpage/fullpage.extensions.min.js"></script>
+    <script src="https://supersage.io/resources/assets/revealator/fm.revealator.jquery.js"></script>
+    <script src="https://supersage.io/resources/js/index.js"></script>
+    <script src="https://supersage.io/resources/js/common.js?v=1588455189"></script>
+    <script>
+        $(function () {
+          particlesJS("particles-js", {
+            "particles": {
+              "number": {
+                "value": 355,
+                "density": {
+                  "enable": true,
+                  "value_area": 789.1476416322727
+                }
+              },
+              "color": {
+                "value": "#ffffff"
+              },
+              "shape": {
+                "type": "circle",
+                "stroke": {
+                  "width": 0,
+                  "color": "#000000"
+                },
+                "polygon": {
+                  "nb_sides": 5
+                },
+                "image": {
+                  "src": "img/github.svg",
+                  "width": 100,
+                  "height": 100
+                }
+              },
+              "opacity": {
+                "value": 0.48927153781200905,
+                "random": false,
+                "anim": {
+                  "enable": true,
+                  "speed": 0.2,
+                  "opacity_min": 0,
+                  "sync": false
+                }
+              },
+              "size": {
+                "value": 2,
+                "random": true,
+                "anim": {
+                  "enable": true,
+                  "speed": 2,
+                  "size_min": 0,
+                  "sync": false
+                }
+              },
+              "line_linked": {
+                "enable": false,
+                "distance": 150,
+                "color": "#ffffff",
+                "opacity": 0.4,
+                "width": 1
+              },
+              "move": {
+                "enable": true,
+                "speed": 0.2,
+                "direction": "none",
+                "random": true,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                  "enable": false,
+                  "rotateX": 600,
+                  "rotateY": 1200
+                }
+              }
+            },
+            "interactivity": {
+              "detect_on": "canvas",
+              "events": {
+                "onhover": {
+                  "enable": true,
+                  "mode": "bubble"
+                },
+                "onclick": {
+                  "enable": true,
+                  "mode": "push"
+                },
+                "resize": true
+              },
+              "modes": {
+                "grab": {
+                  "distance": 400,
+                  "line_linked": {
+                    "opacity": 1
+                  }
+                },
+                "bubble": {
+                  "distance": 83.91608391608392,
+                  "size": 1,
+                  "duration": 3,
+                  "opacity": 1,
+                  "speed": 3
+                },
+                "repulse": {
+                  "distance": 200,
+                  "duration": 0.4
+                },
+                "push": {
+                  "particles_nb": 4
+                },
+                "remove": {
+                  "particles_nb": 2
+                }
+              }
+            },
+            "retina_detect": true
+          });
+    
+        });
+      </script>
+    <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;rayId&quot;:&quot;655e8f5f2ace545e&quot;,&quot;token&quot;:&quot;c4dd94d48f884b2080f130a7c83adcb8&quot;,&quot;version&quot;:&quot;2021.5.1&quot;,&quot;si&quot;:10}"></script>
+    
+    </div>

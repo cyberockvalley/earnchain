@@ -1,0 +1,15 @@
+{
+    "page-title-presale": "Join the ECT presale", 
+    "page-title-airdrop": "Get the ECT airdrop.",
+    "airdrop-form": "To participate in the ongoing ECT airdrop, please fill the ECT Airdrop application form <0>here.</0>",
+    "airdrop-form-link": "To get more ECT from the airdrop, share the airdrop form link along with your twitter username with your friends and family.<0></0>Airdrop Form Link: <1></1>",
+    "title-presale": "ECT presale is going on",
+    "subtitle-presale": "Join the launch before the jump",
+    "title-airdrop": "Airdrop",
+    "subtitle-airdrop": "Join the Earnchain community and be rewarded",
+    "amount": "To join the presale, send BNB between <0></0> to <1></1> BNB to the presale address.",
+    "rate": "1 BNB = <0></0> ECT",
+    "address-presale": "The presale address is <0></0>",
+    "failed-tx": "Note: If the transaction fails, the BSC blockchain will return any BNB sent back to your wallet, but you won't get ECT.",
+    "failed-solution": "The main cause of a presale transaction failure is a low transaction/gas fee estimation made by your wallet. Some wallets only estimate the gas fee for sending out your BNB, but fails to calculate the gas fee needed by the blockchain to send back the token you're buying to your wallet. To solve this problem easily, just increase your transaction/gas fee when sending BNB to any presale address. Increasing your gas fee doesn't increase the fee the blockchain finally deducts for a transaction. The blockchain will only use what's needed for the transaction, and return the rest to your wallet."
+}
