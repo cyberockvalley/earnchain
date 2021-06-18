@@ -49,7 +49,7 @@
     "map-desc-presale": "The ECT presale is currently going on. We're raising money to make Earnchain more profitable for both Earnchain dapps members and Earnchain token(ECT) holders.",
     "map-time-pswap": "August 2021",
     "map-title-pswap": "Pancakeswap listing",
-    "map-desc-pswap": "Liquidity provision on pancankeswap. No one can trade ECT until the completion of the presale. The smart contract has been locked for the duration of the presale. Only Earnchain Matrix, and the presale smart contract can transfer the token to adresses. After the presale completion, liquidity will be provided on pancakeswap from the BNB raised from the presale, and the profits Eatnchain matrix has made soo far. Once this is done, ECT will then unlock transaction.",
+    "map-desc-pswap": "Liquidity provision on pancankeswap. No one can trade ECT until the completion of the presale. The smart contract has been locked for the duration of the presale. Only Earnchain Matrix, and the presale smart contract can transfer the token to adresses. After the presale completion, liquidity will be provided on pancakeswap from the BNB raised from the presale, and the profits Earnchain matrix has made soo far. Once this is done, ECT will then unlock transaction.",
     "map-time-cmc": "August 2021",
     "map-title-cmc": "Listing on coin directories",
     "map-desc-cmc": "Listing on Coinmarketcap and Coingecko.",

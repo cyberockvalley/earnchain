@@ -359,8 +359,8 @@ export default function SlotCSS({isGlobal}) {
     }
     
     @media screen and (min-width:320px) and (max-width:767px) {
-        .wrapper {
-            margin-top: 130px;
+        .wrapper {/*
+            margin-top: 130px;*/
             max-width: 96%;
             padding: 30px
         }
@@ -376,8 +376,8 @@ export default function SlotCSS({isGlobal}) {
     }
     
     @media screen and (max-width:1200px) {
-        .wrapper {
-            margin-top: 130px
+        .wrapper {/*
+            margin-top: 130px*/
         }
         .header-wrap {
             justify-content: center

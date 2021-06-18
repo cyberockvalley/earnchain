@@ -121,6 +121,7 @@ const RegPage = () => {
   console.log("QUERY::", uplineId, textIsNumber(uplineId, [0]))
 
   const handleRegClick = () => {
+    
     if(!account) {
       onOpen()
 
@@ -209,6 +210,8 @@ const RegPage = () => {
   }
 
   const checkUplineId = () => {
+    console.log("uplineAccpted:", uplineAccepted, "uplineId:", uplineId)
+    return
     if(uplineAccepted != uplineId) {
       Swal.fire({
         title: t("upline-confirmation-title"),
