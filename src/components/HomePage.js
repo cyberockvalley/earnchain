@@ -7,11 +7,11 @@ import HomeCSS from "./jsx-styles/HomeCSSOld";
 import Link, { buildLink } from "./views/Link";
 import PageTitle from './PageTitle'
 import { useRouter } from 'next/router'
-import { copyFromText, getFromStorage, logIn } from "../utils/f";
-import { AIR_DROP_ACTIVE, CONTRACT_ADDRESSES, PRESALE_ACTIVE, SEC_COLOR } from "../utils/c";
+import { copyFromText, logIn } from "../utils/f";
+import { AIR_DROP_ACTIVE, CONTRACT_ADDRESSES, PRESALE_ACTIVE, SEC_COLOR, SOCIAL_LINKS } from "../utils/c";
 import { Flex } from "@chakra-ui/layout";
 import Container from "./views/Container";
-import { VStack, HStack, Text } from "@chakra-ui/layout";
+import { VStack } from "@chakra-ui/layout";
 import BigText from "./views/texts/BigText";
 import Paragraph from "./views/texts/Paragraph";
 import { Button as BTN } from "@chakra-ui/button";
@@ -30,9 +30,10 @@ import gameLogo from '../images/casino.png'
 import nftLogo from '../images/nft.png'
 import videoLogo from '../images/video.png'
 import { Box } from "@chakra-ui/layout";
+import Footer from "./Footer";
 
 import dynamic from "next/dynamic";
-import { useToast } from "@chakra-ui/react";
+import { HStack, useToast } from "@chakra-ui/react";
 
 
 const StarfieldAnimation = dynamic(
@@ -242,7 +243,7 @@ const HomePage = () => {
                 <Flex id="about" mt={{base: "5vh", md: "15vh"}} w="100%" flexDir={{base: "column-reverse", md: "row"}}>
                   <VStack justifyContent="flex-start" alignItems="flex-start" 
                     className="translucent-bg"
-                    w={{base: "100%", md: "50%"}}>
+                    w={{base: "100%", md: "70%", lg: "50%"}}>
                       <BigText>
                         {t('common:sitename')}
                       </BigText>
@@ -296,6 +297,21 @@ const HomePage = () => {
                       }} />
                     </VStack>
                   </Flex>
+                  <Box className="footer-media" justifyContent="flex-start !important">
+                    {
+                      SOCIAL_LINKS.EARNCHAIN.map((social, index) => {
+                        return social.settings.disabled? null :
+                        <Box as="a"
+                          href={social.link}
+                          target="_blank"
+                          className="footer-right__social"
+                          mr="20px"
+                        >
+                          <img src={social.icon} alt={t(`common:${social.id}`)} />
+                        </Box>
+                      })
+                    }
+                  </Box>
               </Container>
             </div>
           </div>
@@ -333,9 +349,12 @@ const HomePage = () => {
               <BigText textTransform="capitalize" mb="15px" fontSize="25px">
                 {t("distros-title")}
               </BigText>
-              <Paragraph fontSize="12px" textAlign="center">
-                {t("distros-subtitle")}
-              </Paragraph>
+              <VStack justifyContent="center" alignItems="center" fontSize="15px" textAlign="center" bg="rgba(0,0,0,.5)" 
+              p="0px 15px"
+              height="40px"
+              borderRadius="5px">
+                <span>{t("distros-subtitle")}</span>
+              </VStack>
           </VStack>
           <Flex w="100%" flexDirection={{base: "column-reverse", md: "row"}} 
           justifyContent="flex-start" alignItems={{base: "center", md: "flex-start"}}>
@@ -394,6 +413,7 @@ const HomePage = () => {
           </Container>
         </Box>
       </VStack>
+      <Footer />
 
       <HomeCSS />
     </Box>

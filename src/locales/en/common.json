@@ -14,6 +14,7 @@
     "link-not-copied": "Could not copy link",
     "scan": "BSCSCAN",
     "sca": "Smart contract address",
+    "ect-address": "ECT address",
     "tx-fail": "The transaction failed on the blockchain. Please try again.",
     "low-bal-title": "Insufficient balance.",
     "conn-error": "An error occurred. Make sure you're connected to the internet",
@@ -46,5 +47,5 @@
     "smart-contract": "Smart contract",
     "faq": "FAQs",
     "load-more": "Load more",
-    "comming-soon": "Comming soon!"
+    "comming-soon": "Coming soon!"
 }

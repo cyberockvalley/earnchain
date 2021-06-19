@@ -46,7 +46,8 @@ html {
     font-size: 16px;
     line-height: 1;
     color: #fff !important;
-    font-family: house-on-mars2, sans-serif
+    font-family: house-on-mars2, sans-serif;
+    word-break: break-word !important;
 }
 a, a:hover {text-decoration: none; color: #F8D12F !important;}
 a:hover {text-decoration: underline;}

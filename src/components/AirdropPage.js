@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import HomeCSS from "./jsx-styles/HomeCSSOld";
 import PageTitle from './PageTitle'
 import { useRouter } from 'next/router'
-import { CONTRACT_ADDRESSES, PRESALE, SEC_COLOR } from "../utils/c";
+import { CONTRACT_ADDRESSES, PRESALE, SEC_COLOR, SOCIAL_LINKS } from "../utils/c";
 import { Button as BTN } from "@chakra-ui/button";
 
 import { Box, Text } from "@chakra-ui/layout";
@@ -17,6 +17,9 @@ import dynamic from "next/dynamic";
 
 import { buildLink } from "./views/Link";
 import { copyFromText } from "../utils/f";
+import preSellerAbi from '../web3/abis/ECTPreseller.json'
+import { useDappContract } from "../web3/hooks/useContract";
+import Footer from "./Footer";
 
 
 const StarfieldAnimation = dynamic(
@@ -31,6 +34,8 @@ const AirdropPage = () => {
   const { t, lang } = useTranslation('airdrop')
   const router = useRouter()
   const toast = useToast()
+
+  const preSellerContract = useDappContract(preSellerAbi.address, preSellerAbi.abi)
 
   const getTitle = () => {
     if(["/airdrop", "/airdrop#index"].includes(router.asPath)) {
@@ -49,7 +54,38 @@ const AirdropPage = () => {
     setView()
   }, [])
 
-  const setView = () => {
+  const [tokenPerBNB, setTokenPerBNB] = useState()
+  const [minBNB, setMinBNB] = useState()
+  const [maxBNB, setMaxBNB] = useState()
+  const [viewSetting, setViewSetting] = useState()
+  useEffect(() => {
+    if(preSellerContract && !viewSetting) {
+      setViewSetting(true)
+      setView()
+    }
+  }, [preSellerContract])
+
+  const setView = () => {/*
+    preSellerContract.deployed()
+    .then(async instance => {
+      var p = [
+        instance.isFinalised(),
+        instance.tokenPerBNB(),
+        instance.minBNB(),
+        instance.maxBNB()
+      ]
+      var pResult = await Promise.all(p)
+      console.log("presellerInfo:", pResult)
+    })
+    .catch((error) => {
+      console.log("presellerInfo.Error", error)
+      toast({
+        description: t("common:conn-error"),
+        status: "error",
+        duration: 4000,
+        isClosable: true
+      })
+    })*/
   }
 
 
@@ -74,12 +110,12 @@ const AirdropPage = () => {
         <HomeHeader />
         <Box className="wrapper" id="wrapper" w="100%" pt={{base: "90px"}}>
           <Box as={StarfieldAnimation} numParticles={300} depth={300} alphaFactor={1} 
-          pos="absolute" width="100%" height="100%" />
+          pos="absolute" width="100%" height="100%" zIndex="-10" />
 
           <Box id="index" className="section will-animate" w="100%">
             <Box className="section-content" w="100%">
                   <Container>
-                    <VStack justifyContent="flex-start" alignItems="center" w="100%" mb="25px">
+                    <VStack textAlign="center" justifyContent="flex-start" alignItems="center" w="100%" mb="25px">
                         <BigText textTransform="capitalize">
                           {t("title-airdrop")}
                         </BigText>
@@ -139,7 +175,7 @@ const AirdropPage = () => {
           <Box id="presale" className="section will-animate" w="100%">
             <Box className="section-content" w="100%">
                 <Container>
-                  <VStack justifyContent="flex-start" alignItems="center" w="100%" mb="25px">
+                  <VStack textAlign="center" justifyContent="flex-start" alignItems="center" w="100%" mb="25px">
                         <BigText textTransform="capitalize">
                           {t("title-presale")}
                         </BigText>
@@ -235,6 +271,7 @@ const AirdropPage = () => {
             `}
         </style>
       </Box>
+      <Footer zIndex="3" />
       <HomeCSS />
     </Box>
   )
