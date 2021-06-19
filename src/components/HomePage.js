@@ -4,11 +4,11 @@ import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import HomeHeader from "./HomeHeader";
 import HomeCSS from "./jsx-styles/HomeCSSOld";
-import Link from "./views/Link";
+import Link, { buildLink } from "./views/Link";
 import PageTitle from './PageTitle'
 import { useRouter } from 'next/router'
-import { getFromStorage, logIn } from "../utils/f";
-import { AIR_DROP_ACTIVE, PRESALE_ACTIVE, SEC_COLOR } from "../utils/c";
+import { copyFromText, getFromStorage, logIn } from "../utils/f";
+import { AIR_DROP_ACTIVE, CONTRACT_ADDRESSES, PRESALE_ACTIVE, SEC_COLOR } from "../utils/c";
 import { Flex } from "@chakra-ui/layout";
 import Container from "./views/Container";
 import { VStack, HStack, Text } from "@chakra-ui/layout";
@@ -32,6 +32,7 @@ import videoLogo from '../images/video.png'
 import { Box } from "@chakra-ui/layout";
 
 import dynamic from "next/dynamic";
+import { useToast } from "@chakra-ui/react";
 
 
 const StarfieldAnimation = dynamic(
@@ -42,6 +43,7 @@ const StarfieldAnimation = dynamic(
 const HomePage = () => {
   const { t } = useTranslation('home')
   const router = useRouter()
+  const toast = useToast()
 
   const [features, setFeatures] = useState()
   const [roadmap, setRoadmap] = useState()
@@ -62,7 +64,38 @@ const HomePage = () => {
     setFeatures([
       {
         title: t("f-title-reward-tax"),
-        content: <Trans i18nKey="home:f-desc-reward-tax" components={[<br />]} />,
+        content: <Trans i18nKey="home:f-desc-reward-tax" components={[
+        <br />, <br />, 
+        <span>
+            <a
+            href={buildLink(CONTRACT_ADDRESSES.ectBNB, {isContractAddress: true})}
+            target="_blank"
+          >
+            {CONTRACT_ADDRESSES.ectBNB}{" "}
+          </a>
+          <Box as="span" textTransform="uppercase"
+            className="status-panel_partners_copy fa fa-copy"
+            onClick={() => {
+              copyFromText(CONTRACT_ADDRESSES.ectBNB || "", () => {
+                toast({
+                  description: t("common:addr-copied"),
+                  duration: 3000,
+                  status: "success",
+                  isClosable: true
+                })
+              },
+              () => {
+                toast({
+                  description: t("common:addr-not-copied"),
+                  duration: 3000,
+                  status: "error",
+                  isClosable: true
+                })
+              })
+            }}
+          >
+          </Box>
+        </span>]} />,
         image: staticReward
       },
       {
@@ -203,7 +236,7 @@ const HomePage = () => {
             
             <div className="section-content heading-content full">
               <div className="diamond-back"></div>
-              <Box className="heading-content__cat" visibility="hidden"></Box>
+              <Box className="heading-content__cat" visibility="hidden" h="150px !important"></Box>
 
               <Container bg="" mt="" textAlign="left !important">
                 <Flex id="about" mt={{base: "5vh", md: "15vh"}} w="100%" flexDir={{base: "column-reverse", md: "row"}}>
@@ -330,9 +363,9 @@ const HomePage = () => {
 
             <DistroPie
                 data={[
-                  { title: t('burnt'), value: 50, color: '#E38627' },
-                  { title: t('presale'), value: 45, color: '#C13C37' },
-                  { title: t('team'), value: 5, color: '#6A2135' },
+                  { title: t('burnt'), value: 20, color: '#E38627' },
+                  { title: t('presale'), value: 50, color: '#C13C37' },
+                  { title: t('team'), value: 30, color: '#6A2135' },
                 ]} 
             />
           </Flex>

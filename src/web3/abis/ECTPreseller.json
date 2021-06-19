@@ -2,12 +2,12 @@
    "address": "0xDc6605f9fb32523b9E6dB202C508D637924Ec40e",
    "abi": [],
    "tokenPerBNB": {
-      "number": 100,
-      "withDecimalString": "100000000000"
+      "number": 10000000,
+      "withDecimalString": "10000000000000000"
    },
    "minBNB": {
-      "number": 0,
-      "withDecimalString": "200000000000000000"
+      "number": 0.1,
+      "withDecimalString": "100000000000000000"
    },
    "maxBNB": {
       "number": 200,

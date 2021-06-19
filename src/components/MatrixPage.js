@@ -117,7 +117,7 @@ const MatrixPage = () => {
             {CONTRACT_ADDRESSES.ectBNB}{" "}
           </a>
           <Box as="span" textTransform="uppercase"
-            className="status-panel_partners_copy fa fa-2x fa-copy"
+            className="status-panel_partners_copy fa fa-copy"
             onClick={() => {
               copyFromText(CONTRACT_ADDRESSES.ectBNB || "", () => {
                 toast({
